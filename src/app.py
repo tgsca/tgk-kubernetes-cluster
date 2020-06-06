@@ -18,5 +18,10 @@ def clear():
     return jsonify('Display cleared'), 200
 
 
+@app.route('/favicon.ico', methods=['GET'])
+def favicon():
+    return jsonify(''), 200
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

@@ -1,4 +1,5 @@
 import socket
+from subprocess import check_output
 from .lib_oled96 import ssd1306
 from smbus import SMBus
 from PIL import ImageFont
@@ -12,7 +13,7 @@ class Oled96:
 
     def __init__(self):
         self.hostname = socket.gethostname()
-        self.ip = socket.gethostbyname(self.hostname)
+        self.ip = check_output(['hostname', '-I']).decode("utf-8").split(' ')[0]
 
         # Display einrichten
         self.i2cbus = SMBus(1)            # 0 = Raspberry Pi 1, 1 = Raspberry Pi > 1
@@ -30,7 +31,7 @@ class Oled96:
     def show(self, status: str = 'Running...'):
         # Ausgaben definieren
         self.oled.canvas.text((0, 0), f'{self.hostname}', font=self.FreeSans20, fill=1)
-        self.oled.canvas.text((0, 22), f'IP: {self.ip}', font=self.FreeSans12, fill=1)
+        self.oled.canvas.text((0, 22), f'{self.ip}:5000', font=self.FreeSans12, fill=1)
         self.oled.canvas.text((0, 40), f'{status}', font=self.FreeSans20, fill=1)
         # Ausgaben auf Display schreiben
         self.oled.display()
