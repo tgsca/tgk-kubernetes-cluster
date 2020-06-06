@@ -19,8 +19,8 @@ class Oled96:
         self.oled = ssd1306(self.i2cbus)
 
         # Schriftarten festlegen
-        self.FreeSans12 = ImageFont.truetype('FreeSans.ttf', 12)
-        self.FreeSans20 = ImageFont.truetype('FreeSans.ttf', 20)
+        self.FreeSans12 = ImageFont.truetype('./fonts/FreeSans.ttf', 12)
+        self.FreeSans20 = ImageFont.truetype('./fonts/FreeSans.ttf', 20)
 
     def clear(self):
         # Display zum Start löschen
