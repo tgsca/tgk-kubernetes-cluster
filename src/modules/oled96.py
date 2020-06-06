@@ -1,6 +1,5 @@
-import time
 import socket
-from external_libs.lib_oled96.lib_oled96 import ssd1306
+from .lib_oled96 import ssd1306
 from smbus import SMBus
 from PIL import ImageFont
 
