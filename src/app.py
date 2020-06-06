@@ -12,7 +12,7 @@ def index(status: str = 'Running...'):
 
 
 @app.route('/clear', methods=['GET'])
-def index():
+def clear():
     display.clear()
 
 
